@@ -14,9 +14,9 @@ Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
+| guess of 26 | "Too high" hint | "Too low" hint | None|
+| after click on "New Game" | Not Error mesage | but "Game over. Start a new game to try again" error message still there | None |
+| Click on "Show Hint" | see hint somewhere | not hint show anywhwere | None |
 
 ---
 
