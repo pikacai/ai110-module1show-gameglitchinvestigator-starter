@@ -11,6 +11,8 @@ from logic_utils import (
 
 # Hint text for each outcome. A guess that is too HIGH should tell the
 # player to go LOWER, and vice versa.
+# FIX: the AI caught that the original hint text was reversed; we mapped
+# each outcome to the correct direction here (agent mode).
 HINT_MESSAGES = {
     "Win": "🎉 Correct!",
     "Too High": "📉 Go LOWER!",
@@ -79,6 +81,8 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
+    # FIX: pair-debugged the sticky banner + non-clearing input box with the
+    # AI (agent mode) — full state reset plus an input_round bump live here.
     # Reset EVERY per-game field (status/score/history too), not just the
     # secret and attempt counter — otherwise a finished game keeps its
     # "won"/"lost" status and the "Game over" banner sticks around.
@@ -138,6 +142,9 @@ if submit:
                     f"Score: {st.session_state.score}"
                 )
 
+# FIX: the AI explained Streamlit reruns — the hint used to live inside the
+# Submit branch, so the checkbox did nothing. We store it in session state
+# and render it here every rerun so the toggle actually works (agent mode).
 # Show the most recent hint whenever "Show hint" is on, regardless of
 # which widget triggered this rerun. This is what makes the checkbox
 # actually toggle the hint on and off.
